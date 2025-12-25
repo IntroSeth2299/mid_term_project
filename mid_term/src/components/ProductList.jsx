@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function UserList({ users, setUsers }) {
+export default function ProductList({ products, setProducts }) {
   const deleteUser = (id) => {
-    setUsers(users.filter((u) => u.id !== id));
+    setProducts(products.filter((u) => u.id !== id));
   };
 
   return (
@@ -14,7 +14,7 @@ export default function UserList({ users, setUsers }) {
           </tr>
         </thead>
         <tbody>
-          {users.map((u, i) => (
+          {products.map((u, i) => (
             <tr key={u.id}>
               <td>{i + 1}</td>
               <td>{u.name}</td>
@@ -27,7 +27,7 @@ export default function UserList({ users, setUsers }) {
               </td>
             </tr>
           ))}
-          {users.length === 0 && (
+          {products.length === 0 && (
             <tr><td colSpan="5">No Products</td></tr>
           )}
         </tbody>

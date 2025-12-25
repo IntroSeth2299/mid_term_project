@@ -1,20 +1,20 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export default function EditUser({ users, setUsers }) {
+export default function EditProduct({ products, setProducts }) {
   const { id } = useParams();
-  const user = users.find((u) => u.id == id);
-  const [edit, setEdit] = useState(user);
+  const product = products.find((u) => u.id == id) || { name: "", category: "", tel_num: "" };
+  const [edit, setEdit] = useState(product);
   const navigate = useNavigate();
 
   const update = () => {
-    setUsers(users.map((u) => (u.id == id ? edit : u)));
+    setProducts(products.map((u) => (u.id == id ? edit : u)));
     navigate("/");
   };
 
   return (
     <div className="container mt-4">
-      <h3>Edit User</h3>
+      <h3>Edit Product</h3>
       <input className="form-control mb-2" value={edit.name}
         onChange={(e) => setEdit({ ...edit, name: e.target.value })} />
       <input className="form-control mb-2" value={edit.category}

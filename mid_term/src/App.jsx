@@ -1,31 +1,31 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import UserList from "./components/UserList";
-import AddUser from "./components/AddUser";
-import EditUser from "./components/EditUser";
-import ViewUser from "./components/ViewUser";
+import ProductList from "./components/ProductList";
+import AddProduct from "./components/AddProduct";
+import EditProduct from "./components/EditProduct";
+import ViewProduct from "./components/ViewProduct";
 
 function App() {
-  const [users, setUsers] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("users"));
-    if (data) setUsers(data);
+    const data = JSON.parse(localStorage.getItem("products"));
+    if (data) setProducts(data);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
+    localStorage.setItem("products", JSON.stringify(products));
+  }, [products]);
 
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<UserList users={users} setUsers={setUsers} />} />
-        <Route path="/add" element={<AddUser users={users} setUsers={setUsers} />} />
-        <Route path="/edit/:id" element={<EditUser users={users} setUsers={setUsers} />} />
-        <Route path="/view/:id" element={<ViewUser users={users} />} />
+        <Route path="/" element={<ProductList products={products} setProducts={setProducts} />} />
+        <Route path="/add" element={<AddProduct products={products} setProducts={setProducts} />} />
+        <Route path="/edit/:id" element={<EditProduct products={products} setProducts={setProducts} />} />
+        <Route path="/view/:id" element={<ViewProduct products={products} />} />
       </Routes>
     </BrowserRouter>
   );
